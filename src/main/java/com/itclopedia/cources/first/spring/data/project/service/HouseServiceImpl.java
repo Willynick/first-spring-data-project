@@ -1,11 +1,10 @@
 package com.itclopedia.cources.first.spring.data.project.service;
 
 import com.itclopedia.cources.first.spring.data.project.entity.House;
+import com.itclopedia.cources.first.spring.data.project.exception.EntityNotFoundException;
 import com.itclopedia.cources.first.spring.data.project.repository.HouseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -19,7 +18,12 @@ public class HouseServiceImpl implements HouseService {
     }
 
     @Override
-    public House findByNumberNativeSQL(Integer number) {
-        return houseRepository.findByNumberNativeSQL(number);
+    public void delete(Integer houseId) {
+        if (!houseRepository.existsById(houseId)) {
+            throw new EntityNotFoundException("House", houseId);
+        }
+
+        houseRepository.deleteById(houseId);
     }
+
 }

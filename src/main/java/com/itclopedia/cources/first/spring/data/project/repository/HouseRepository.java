@@ -12,7 +12,4 @@ public interface HouseRepository extends CrudRepository<House, Integer> {
     @Query("SELECT h FROM House h WHERE h.number = :number AND h.area is null")
     House findByNumber(@Param("number") Integer number);
 
-    @Query(value = "SELECT * FROM houses WHERE number = ?1 and area is null", nativeQuery = true)
-    House findByNumberNativeSQL(Integer number);
-
 }

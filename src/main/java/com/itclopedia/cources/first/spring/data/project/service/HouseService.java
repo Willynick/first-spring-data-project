@@ -8,6 +8,6 @@ public interface HouseService {
 
     House findByNumber(Integer number);
 
-    House findByNumberNativeSQL(Integer number);
+    void delete(Integer houseId);
 
 }

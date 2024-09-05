@@ -1,10 +1,9 @@
 package com.itclopedia.cources.first.spring.data.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -21,9 +20,11 @@ public class Street {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
     private Integer id;
 
+    @JsonProperty("streetName")
     @Column(name = "name")
     public String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "street", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public List<House> houses;
 

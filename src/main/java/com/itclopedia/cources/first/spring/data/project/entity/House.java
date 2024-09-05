@@ -1,5 +1,6 @@
 package com.itclopedia.cources.first.spring.data.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,7 @@ public class House {
     @Column(name = "number")
     private Integer number;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "street_id")
     private Street street;

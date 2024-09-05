@@ -6,8 +6,12 @@ import java.util.List;
 
 public interface StreetService {
 
-    List<Street> getAllStreets(boolean isJdbcTemplate);
+    List<Street> getAllStreets();
 
     List<Street> findByName(String name);
+
+    void createStreet(Street street);
+
+    void updateStreet(Integer streetId, Street street);
 
 }
